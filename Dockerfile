@@ -6,6 +6,16 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y git
 
+# Install Fish and set as default shell
+RUN apt-get update && apt-get install -y fish && \
+    echo $(which fish) >> /etc/shells && \
+    chsh -s $(which fish)
+
+# Set Fish as default for the 'vscode' user (if using)
+RUN if id root &>/dev/null; then \
+      chsh -s $(which fish) root; \
+    fi
+
 # Get latest version of pip
 RUN pip install --upgrade pip 
 

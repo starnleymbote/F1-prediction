@@ -18,6 +18,10 @@ class ApiData:
             raise Exception(f"Error fetching data: {all_meetings.status_code}")
         
         return all_meetings.json()
+    
+    def get_meeting_info(self, meeting_id):
+        """Meeting Provides information about meetings.A meeting refers to a Grand Prix or testing weekend and usually 
+        includes multiple sessions (practice, qualifying"""
 
     def fetch_data(self):
         # Simulate fetching data from the API
